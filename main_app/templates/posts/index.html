@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Empowering Women in Tech</h1>
+
+{% for post in posts %}
+<a href="{% url 'detail' post.id %}">
+  <div class="card">
+    <div class="card-content">
+      <span class="card-title">{{ post.title }}</span>
+      <p>Description: {{ post.description|linebreaks }}</p>
+      <p>category: {{ post.category }}</p>
+    </div>
+  </div>
+</a>
+{% endfor %}
+
+
+{% endblock %}

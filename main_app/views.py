@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from .models import Post
 
 
 # Create your views here.
@@ -25,3 +26,9 @@ def signup(request):
   form = UserCreationForm()
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
+
+def posts_index(request):
+  posts = Post.objects.all()
+  return render(request, 'posts/index.html', {
+    'posts': posts
+  })
