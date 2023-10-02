@@ -3,10 +3,47 @@
 
 <h1>Empower Details</h1>
 <div class="card">
-    <div class="card-content">
-      <span class="card-title">{{ post.title }}</span>
-      <p>Description: {{ post.description|linebreaks }}</p>
-        <p>Category: {{ post.age }}</p>
-    </div>
+  <div class="card-content">
+    <span class="card-title">
+      {{ post.title }}</span>
+    <p>Description:
+      {{ post.description|linebreaks }}
+    </p>
+    <p>Category:
+      {{ post.age }}
+    </p>
   </div>
+</div>
+
+<div class="col s6">
+  <form action="{% url 'post_create' post.id %}" method="POST">
+    {% csrf_token %}
+    <!-- Render the inputs -->
+    {{ feeding_form.as_p }}
+
+  </form>
+  <br>
+  {% if post.posted %}
+  <div class="card-panel teal-text center-align">{{post.title}} has been posted for today</div>
+  {% else %}
+  <div class="card-panel red-text center-align">{{post.title}} whats new in the news feed</div>
+  {% endif %}
+  <table class="striped">
+    <thead>
+      <tr>
+        <th>News Feed</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for post in posts.category_set.all %}
+      <tr>
+        <td>{{posts.get_category_display}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<!-- New Markup Above -->
+</div>
+
 {% endblock  %}
