@@ -8,6 +8,7 @@
   <title>empowerTech</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 
 <body>
@@ -24,13 +25,16 @@
           {% else %}
           <li><a href="{% url 'signup' %}">Sign Up</a></li>
           <li><a href="{% url 'login' %}">Log In</a></li>
+          <li><a href="{% url 'posts_create' %}">Add a Post</a></li>
           {% endif %}
         </ul>
 
     </nav>
   </header>
-  {% block content %}
-  {% endblock content %}
+  <main class="container">
+    {% block content %}
+    {% endblock content %}
+  </main>
 </body>
 
 </html>
