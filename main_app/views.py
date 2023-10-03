@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from django.views.generic.edit import CreateView
 from .models import Post
 
 
@@ -42,7 +42,12 @@ def posts_detail(request, post_id):
 class PostCreate(CreateView):
   model = Post
   fields = ['title', 'description', 'category']
-   
-  
-  
-  
+  success_url = '/posts/{id}'
+
+class PostUpdate(UpdateView):
+  model = Post
+  fields = ['title', 'description', 'category']
+
+class PostDelete(DeleteView):
+  model = Post
+  success_url = '/post'

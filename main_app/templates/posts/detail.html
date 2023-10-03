@@ -13,15 +13,13 @@
       {{ post.age }}
     </p>
   </div>
+  <div class="card-action">
+    <a href="{% url 'post_update' post.id %}">Edit</a>
+    <a href="{% url 'post_delete' post.id %}">Delete</a>
+  </div>
 </div>
 
 <div class="col s6">
-  <form action="{% url 'post_create' post.id %}" method="POST">
-    {% csrf_token %}
-    <!-- Render the inputs -->
-    {{ feeding_form.as_p }}
-
-  </form>
   <br>
   {% if post.posted %}
   <div class="card-panel teal-text center-align">{{post.title}} has been posted for today</div>
