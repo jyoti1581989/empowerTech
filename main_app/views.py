@@ -42,7 +42,7 @@ def posts_detail(request, post_id):
 class PostCreate(CreateView):
   model = Post
   fields = ['title', 'description', 'category']
-  success_url = '/posts/{id}'
+  
 
 class PostUpdate(UpdateView):
   model = Post
@@ -50,4 +50,4 @@ class PostUpdate(UpdateView):
 
 class PostDelete(DeleteView):
   model = Post
-  success_url = '/post'
+  success_url = '/posts'
