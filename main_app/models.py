@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from datetime import date
 
 CATEGORIES = (
   ('E', 'Education'),
@@ -18,8 +19,26 @@ class Post(models.Model):
     default=CATEGORIES [0][0]
     )
 
-  # def __str__(self):
-  #   return f"{self.get_category_display()}"
+  def __str__(self):
+    return f"{self.get_category_display()}"
 
   def get_absolute_url(self):
     return reverse('detail', kwargs={'post_id': self.id})
+
+  def comment_for_today(self):
+    return self.comment_set.filter(date=date.today()).count() >= len()
+
+class Comment(models.Model):
+  description = models.CharField(max_length=100)
+  date = models.DateField('Comment Date')
+
+  post = models.ForeignKey(
+    Post, 
+    on_delete=models.CASCADE
+    )
+
+  def __str__(self):
+    return f"{self.get_description_display()} on {self.date}"
+   
+  class Meta:
+    ordering = ['-date']

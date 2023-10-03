@@ -3,6 +3,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from .models import Post
+from .forms import CommentForm
 
 
 # Create your views here.
@@ -36,7 +37,10 @@ def posts_index(request):
 
 def posts_detail(request, post_id):
   post = Post.objects.get(id=post_id)
-  return render(request, 'posts/detail.html', {'post': post})
+  comment_form = CommentForm()
+  return render(request, 'posts/detail.html', {
+    'post': post, 'comment_form': comment_form
+    })
 
 
 class PostCreate(CreateView):
@@ -51,3 +55,11 @@ class PostUpdate(UpdateView):
 class PostDelete(DeleteView):
   model = Post
   success_url = '/posts'
+
+def add_comment(request, post_id):
+  form = CommentForm(request.POST)
+  if form.is_valid():
+    new_comment = form.save(commit=False)
+    new_comment.post_id = post_id
+    new_comment.save()
+  return redirect('detail', post_id=post_id)
