@@ -1,15 +1,68 @@
 body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
+  background-color: whitesmoke;
+}
+nav {
+  background-color: #0DD2DF;
+}
+
+nav ul a,
+nav .brand-logo {
+  color: #444;
+}
+
+nav .brand-logo {
+  color: #444;
+}
+
+p {
+  line-height: 2rem;
+}
+
+.sidenav-trigger {
+  color: #0e0f0f;
+}
+
+.parallax-container {
+  min-height: 380px;
+  line-height: 0;
+  height: auto;
+  color: rgba(216, 131, 131, 0.9);
+}
+
+.parallax-container .section {
+  width: 100%;
+}
+
+@media only screen and (max-width : 992px) {
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
   }
-  
-  main {
-    flex: 1 0 auto;
+
+  #index-banner .section {
+    top: 10%;
   }
-  
-  footer.page-footer {
-    padding-top: 0;
-    text-align: right;
+}
+
+@media only screen and (max-width : 600px) {
+  #index-banner .section {
+    top: 0;
   }
-  
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+
+.icon-block .material-icons {
+  font-size: inherit;
+  color: #0CC0DF;
+}
+
+footer.page-footer {
+  margin: 0;
+}
+
+.img {
+  size: 650px;
+}
