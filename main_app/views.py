@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from .models import Post
+from .models import Post, Comment
 from .forms import CommentForm
 
 
@@ -63,3 +63,10 @@ def add_comment(request, post_id):
     new_comment.post_id = post_id
     new_comment.save()
   return redirect('detail', post_id=post_id)
+
+def delete_comment(request, post_id, comment_id):
+  Comment.objects.get(id=comment_id).delete()
+  return redirect('detail', post_id=post_id)
+# class CommentDelete(DeleteView):
+#    model = Comment
+#    success_url = '/comments'
