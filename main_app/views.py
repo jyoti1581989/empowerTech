@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 from .models import Post, Comment
 from .forms import CommentForm
@@ -29,12 +31,14 @@ def signup(request):
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
 
+
 def posts_index(request):
   posts = Post.objects.all()
   return render(request, 'posts/index.html', {
     'posts': posts
   })
 
+@login_required
 def posts_detail(request, post_id):
   post = Post.objects.get(id=post_id)
   comment_form = CommentForm()
@@ -43,20 +47,21 @@ def posts_detail(request, post_id):
     })
 
 
-class PostCreate(CreateView):
-  model = Post
-  fields = ['title', 'description', 'category']
-  
-
-class PostUpdate(UpdateView):
+class PostCreate(LoginRequiredMixin, CreateView):
   model = Post
   fields = ['title', 'description', 'category']
 
-class PostDelete(DeleteView):
+
+class PostUpdate(LoginRequiredMixin, UpdateView):
+  model = Post
+  fields = ['title', 'description', 'category']
+
+class PostDelete(LoginRequiredMixin, DeleteView):
   model = Post
   success_url = '/posts'
 
-def add_comment(request, post_id):
+@login_required
+def add_comment(LoginRequiredMixin, request, post_id):
   form = CommentForm(request.POST)
   if form.is_valid():
     new_comment = form.save(commit=False)
@@ -64,9 +69,6 @@ def add_comment(request, post_id):
     new_comment.save()
   return redirect('detail', post_id=post_id)
 
-def delete_comment(request, post_id, comment_id):
+def delete_comment(LoginRequiredMixin, request, post_id, comment_id):
   Comment.objects.get(id=comment_id).delete()
   return redirect('detail', post_id=post_id)
-# class CommentDelete(DeleteView):
-#    model = Comment
-#    success_url = '/comments'
