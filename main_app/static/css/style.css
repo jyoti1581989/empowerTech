@@ -86,3 +86,7 @@ p.light {
 h5 {
   color: #0CC0DF;
 }
+
+body.main {
+  background-image: url(img/abstractwhite.png)
+}
