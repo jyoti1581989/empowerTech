@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Empowering Women in Tech</h1>
 
+<main class="posts-index">
+  <h1>Empowering Women in Tech</h1>
 {% for post in posts %}
 <a href="{% url 'detail' post.id %}">
   <div class="card">
@@ -14,6 +15,11 @@
   </div>
 </a>
 {% endfor %}
+</main>
 
+<script>
+  document.body.style.backgroundImage = "url(/static/img/abstractwhite.png)";
+  document.body.style.backgroundSize = "cover";
 
+</script>
 {% endblock %}
