@@ -1,9 +1,8 @@
-
-
 body {
   background-color: whitesmoke;
- 
+
 }
+
 nav {
   background-color: #0DD2DF;
 }
@@ -55,13 +54,13 @@ p {
 
 .icon-block {
   padding: auto;
-  
+
 }
 
 .icon-block .material-icons {
   font-size: inherit;
-  color: red;
- 
+  color: black;
+
 }
 
 footer.page-footer {
@@ -73,15 +72,17 @@ div.row {
   height: 700px;
   display: flex;
 }
+
 img {
- 
+
   size: 800px;
-  
+
 }
 
-
-
-p.light{
- font-size: x-large;
+p.light {
+  font-size: x-large;
 }
 
+h5 {
+  color: #0CC0DF;
+}
