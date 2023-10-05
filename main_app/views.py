@@ -1,3 +1,5 @@
+from django.forms.models import BaseModelForm
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
@@ -51,6 +53,10 @@ class PostCreate(LoginRequiredMixin, CreateView):
   model = Post
   fields = ['title', 'description', 'category']
 
+  def form_valid(self, form):
+    form.instance.user = self.request.user
+    return super().form_valid(form)
+
 
 class PostUpdate(LoginRequiredMixin, UpdateView):
   model = Post
@@ -61,14 +67,16 @@ class PostDelete(LoginRequiredMixin, DeleteView):
   success_url = '/posts'
 
 @login_required
-def add_comment(LoginRequiredMixin, request, post_id):
+def add_comment(request, post_id):
   form = CommentForm(request.POST)
   if form.is_valid():
     new_comment = form.save(commit=False)
     new_comment.post_id = post_id
+    new_comment.user = request.user 
     new_comment.save()
   return redirect('detail', post_id=post_id)
 
-def delete_comment(LoginRequiredMixin, request, post_id, comment_id):
+
+def delete_comment(request, post_id, comment_id):
   Comment.objects.get(id=comment_id).delete()
   return redirect('detail', post_id=post_id)

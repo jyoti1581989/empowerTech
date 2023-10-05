@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from datetime import date
+from django.contrib.auth.models import User
 
 CATEGORIES = (
   ('E', 'Education'),
@@ -18,6 +19,7 @@ class Post(models.Model):
     choices=CATEGORIES,
     default=CATEGORIES [0][0]
     )
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
 
   def __str__(self):
     return f"{self.get_category_display()}"
@@ -31,11 +33,11 @@ class Post(models.Model):
 class Comment(models.Model):
   description = models.CharField(max_length=100)
   date = models.DateField('Comment Date')
-
   post = models.ForeignKey(
     Post, 
     on_delete=models.CASCADE
     )
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
 
   class Meta:
     ordering = ['-date']

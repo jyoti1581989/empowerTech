@@ -10,10 +10,10 @@
       {{ post.description|linebreaks }}
     </p>
     <p>Category:
-      {{ post.age }}
+      {{ post.get_category_display }}
     </p>
   </div>
-  {% if post.user = user %}
+  {% if post.user == user %}
   <div class="card-action">
     <a href="{% url 'posts_update' post.id %}">Edit</a>
     <a href="{% url 'posts_delete' post.id %}">Delete</a>
