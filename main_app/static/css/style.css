@@ -92,8 +92,6 @@ main.container {
 }
 
 main.posts-index {
-  background-image: url(/static/img/abstractwhite.png);
+  /* background-image: url(/static/img/abstractwhite.png); */
   background-size: cover;
 }
-
-
