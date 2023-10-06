@@ -18,6 +18,8 @@ nav .brand-logo {
 
 p {
   line-height: 2rem;
+  
+  
 }
 
 .sidenav-trigger {
@@ -64,24 +66,30 @@ p {
 }
 
 footer.page-footer {
-  margin: 0;
+  margin: 30;
 }
 
 div.row {
-  width: 900px;
+  
+  column-gap: 100px;
   height: 700px;
   display: flex;
-  float: left;
-}
+  float:inherit;
+ justify-content: center;
+ }
 
 img {
   size: 800px;
 }
 
 p.light {
-  font-size: medium;
-  column-width: 300px;
+font-size: large;
+ text-align: center;
+ text-wrap: inherit;
+ 
 }
+  
+
 
 h5 {
   color: #0CC0DF;
