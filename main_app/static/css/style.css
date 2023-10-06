@@ -42,7 +42,7 @@ p {
   }
 
   #index-banner .section {
-    top: 10%;
+    top: 50%;
   }
 }
 
@@ -68,19 +68,19 @@ footer.page-footer {
 }
 
 div.row {
-  width: 700px;
+  width: 900px;
   height: 700px;
   display: flex;
+  float: left;
 }
 
 img {
-
   size: 800px;
-
 }
 
 p.light {
-  font-size: x-large;
+  font-size: medium;
+  column-width: 300px;
 }
 
 h5 {
