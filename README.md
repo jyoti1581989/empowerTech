@@ -17,7 +17,7 @@ Get started with empowerTech today and join us in driving innovation and progres
 
 # Screenshot
 
-![Home](/static/img/home.png)
+![Home](/img/home.png)
 ![ViewPost](/static/img/viewpost.png)
 ![AddPost](/static/img/addpost.png)
 ![Detail](/static/img/detail.png)
