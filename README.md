@@ -1,4 +1,4 @@
-# <empowerTech>
+# empowerTech
 Welcome to empowerTech! This project is designed to empower women in the technology industry through knowledge sharing, networking, collaboration, and inspirational stories.
 
 ## About empowerTech
@@ -17,10 +17,10 @@ Get started with empowerTech today and join us in driving innovation and progres
 
 # Screenshot
 
-<img src="/static/img/home.png">
-<img src="/static/img/viewpost.png">
-<img src="/static/img/addpost.png">
-<img src="/static/img/detail.png">
+![Home](/static/img/home.png)
+![ViewPost](/static/img/viewpost.png)
+![AddPost](/static/img/addpost.png)
+![Detail](/static/img/detail.png)
 
 # Technologies Used
 
@@ -34,11 +34,10 @@ Get started with empowerTech today and join us in driving innovation and progres
 
 # Getting Started
 
-HEROKU
 - https://empowertech-f5f3d20680a5.herokuapp.com/
-TRELLO
+
 - https://trello.com/b/Id7xpVGe/empowertech
-PITCH-DECK
+
 - https://docs.google.com/presentation/d/1lOlM--WlR4FEhVV2W_CLkGLNbEHLbpFRKs1O0j8tVD8/edit?usp=sharing
 
 # Future Steps
