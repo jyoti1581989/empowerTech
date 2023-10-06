@@ -17,10 +17,10 @@ Get started with empowerTech today and join us in driving innovation and progres
 
 # Screenshot
 
-![Home](/img/home.png)
-![ViewPost](/static/img/viewpost.png)
-![AddPost](/static/img/addpost.png)
-![Detail](/static/img/detail.png)
+<img src="https://i.imgur.com/zLMnDP6.png">
+<img src="https://i.imgur.com/p9DKfGX.png">
+<img src="https://i.imgur.com/7nRlPTB.png">
+<img src="https://i.imgur.com/9Ppe5PH.png">
 
 # Technologies Used
 
